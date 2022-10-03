@@ -2,7 +2,7 @@
 
 namespace Coderflex\LaravelTicket\Concerns;
 
-use Coderflex\LaravelTicket\Enums\Status;
+use Coderflex\LaravelTicket\Utils\Status;
 
 trait InteractsWithTickets
 {
@@ -14,7 +14,7 @@ trait InteractsWithTickets
     public function archive(): self
     {
         $this->update([
-            'status' => Status::ARCHIVED->value,
+            'status' => Status::ARCHIVED,
         ]);
 
         return $this;
@@ -28,7 +28,7 @@ trait InteractsWithTickets
     public function close(): self
     {
         $this->update([
-            'status' => Status::CLOSED->value,
+            'status' => Status::CLOSED,
         ]);
 
         return $this;
@@ -42,7 +42,7 @@ trait InteractsWithTickets
     public function reopen(): self
     {
         $this->update([
-            'status' => Status::OPEN->value,
+            'status' => Status::OPEN,
         ]);
 
         return $this;
@@ -55,7 +55,7 @@ trait InteractsWithTickets
      */
     public function isArchived(): bool
     {
-        return $this->status == Status::ARCHIVED->value;
+        return $this->status === Status::ARCHIVED;
     }
 
     /**
@@ -65,7 +65,7 @@ trait InteractsWithTickets
      */
     public function isOpen(): bool
     {
-        return $this->status == Status::OPEN->value;
+        return $this->status === Status::OPEN;
     }
 
     /**
@@ -180,7 +180,7 @@ trait InteractsWithTickets
     public function closeAsResolved(): self
     {
         $this->update([
-            'status' => Status::CLOSED->value,
+            'status' => Status::CLOSED,
             'is_resolved' => true,
         ]);
 
@@ -195,7 +195,7 @@ trait InteractsWithTickets
     public function closeAsUnresolved(): self
     {
         $this->update([
-            'status' => Status::CLOSED->value,
+            'status' => Status::CLOSED,
             'is_resolved' => false,
         ]);
 
@@ -210,7 +210,7 @@ trait InteractsWithTickets
     public function reopenAsUnresolved(): self
     {
         $this->update([
-            'status' => Status::OPEN->value,
+            'status' => Status::OPEN,
             'is_resolved' => false,
         ]);
 

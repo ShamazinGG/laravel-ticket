@@ -2,8 +2,8 @@
 
 namespace Coderflex\LaravelTicket\Scopes;
 
-use Coderflex\LaravelTicket\Enums\Priority;
-use Coderflex\LaravelTicket\Enums\Status;
+use Coderflex\LaravelTicket\Utils\Priority;
+use Coderflex\LaravelTicket\Utils\Status;
 use Illuminate\Database\Eloquent\Builder;
 
 trait TicketScope

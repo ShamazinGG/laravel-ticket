@@ -2,7 +2,7 @@
 
 namespace Coderflex\LaravelTicket\Concerns;
 
-use Coderflex\LaravelTicket\Enums\Visibility;
+use Coderflex\LaravelTicket\Utils\Visibility;
 use Illuminate\Database\Eloquent\Builder;
 
 trait HasVisibility
