@@ -2,8 +2,8 @@
 
 namespace Coderflex\LaravelTicket\Scopes;
 
-use Coderflex\LaravelTicket\Enums\Priority;
-use Coderflex\LaravelTicket\Enums\Status;
+use Coderflex\LaravelTicket\Utils\Priority;
+use Coderflex\LaravelTicket\Utils\Status;
 use Illuminate\Database\Eloquent\Builder;
 
 trait TicketScope
@@ -15,7 +15,7 @@ trait TicketScope
      */
     public function scopeClosed(Builder $builder): Builder
     {
-        return $builder->where('status', Status::CLOSED->value);
+        return $builder->where('status', Status::CLOSED);
     }
 
     /**
@@ -25,7 +25,17 @@ trait TicketScope
      */
     public function scopeOpened(Builder $builder): Builder
     {
-        return $builder->where('status', Status::OPEN->value);
+        return $builder->where('status', Status::OPEN);
+    }
+
+    /**
+     * Get answered tickets
+     *
+     * * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAnswered(Builder $builder): Builder
+    {
+        return $builder->where('status', Status::ANSWERED);
     }
 
     /**
@@ -85,7 +95,7 @@ trait TicketScope
      */
     public function scopeWithLowPriority(Builder $builder): Builder
     {
-        return $builder->where('priority', Priority::LOW->value);
+        return $builder->where('priority', Priority::LOW);
     }
 
     /**
@@ -95,7 +105,7 @@ trait TicketScope
      */
     public function scopeWithNormalPriority(Builder $builder): Builder
     {
-        return $builder->where('priority', Priority::NORMAL->value);
+        return $builder->where('priority', Priority::NORMAL);
     }
 
     /**
@@ -105,6 +115,6 @@ trait TicketScope
      */
     public function scopeWithHighPriority(Builder $builder): Builder
     {
-        return $builder->where('priority', Priority::HIGH->value);
+        return $builder->where('priority', Priority::HIGH);
     }
 }

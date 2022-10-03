@@ -3,13 +3,11 @@
 namespace Coderflex\LaravelTicket\Models;
 
 use Coderflex\LaravelTicket\Concerns\HasVisibility;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
-    use HasFactory;
     use HasVisibility;
 
     /**
@@ -37,7 +35,7 @@ class Category extends Model
     public function getTable()
     {
         return config(
-            'laravel_ticket.table_names.categories',
+            'laravel-ticket.table_names.categories',
             parent::getTable()
         );
     }

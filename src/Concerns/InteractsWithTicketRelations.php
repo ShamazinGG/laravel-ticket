@@ -77,8 +77,30 @@ trait InteractsWithTicketRelations
     public function messageAsUser(?Model $user, string $message): Model
     {
         return $this->messages()->create([
-            'user_id' => $user?->id ?? auth()->id(), // @phpstan-ignore-line
+            'user_id' => $user->id ?? auth()->id(), // @phpstan-ignore-line
             'message' => $message,
         ]);
+    }
+
+    /**
+     * @param Model|null $user
+     *
+     * @param  \Illuminate\Database\Eloquent\Model|null  $user
+     * @return bool
+     */
+    public function isTicketCreator(?Model $user): bool
+    {
+        return $this->user_id == ($user ? $user->getKey() : auth()->id());
+    }
+
+    /**
+     * @param Model|null $user
+     *
+     * @param  \Illuminate\Database\Eloquent\Model|null  $user
+     * @return bool
+     */
+    public function instTicketCreator(?Model $user): bool
+    {
+        return !$this->isTicketCreator($user);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Coderflex\LaravelTicket\Concerns;
 
-use Coderflex\LaravelTicket\Enums\Visibility;
+use Coderflex\LaravelTicket\Utils\Visibility;
 use Illuminate\Database\Eloquent\Builder;
 
 trait HasVisibility
@@ -14,7 +14,7 @@ trait HasVisibility
      */
     public function scopeVisible(Builder $builder)
     {
-        return $builder->where('is_visible', Visibility::VISIBLE->value);
+        return $builder->where('is_visible', Visibility::VISIBLE);
     }
 
     /**
@@ -24,6 +24,6 @@ trait HasVisibility
      */
     public function scopeHidden(Builder $builder)
     {
-        return $builder->where('is_visible', Visibility::HIDDEN->value);
+        return $builder->where('is_visible', Visibility::HIDDEN);
     }
 }

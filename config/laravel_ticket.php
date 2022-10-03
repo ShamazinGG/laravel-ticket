@@ -29,7 +29,7 @@ return [
          * Messages table to appears in the ticket
          */
         'messages' => [
-            'table' => 'messages',
+            'table' => 'tickets_messages',
             /**
              * This is the foreing key for associated to the ticket
              * If you renamed the ticket table, you should consider

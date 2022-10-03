@@ -4,7 +4,6 @@ namespace Coderflex\LaravelTicket\Models;
 
 use Coderflex\LaravelTicket\Concerns;
 use Coderflex\LaravelTicket\Scopes\TicketScope;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -25,7 +24,6 @@ use Illuminate\Foundation\Auth\User;
  */
 class Ticket extends Model
 {
-    use HasFactory;
     use TicketScope;
     use Concerns\InteractsWithTickets;
     use Concerns\InteractsWithTicketRelations;
@@ -54,7 +52,7 @@ class Ticket extends Model
      */
     public function messages(): HasMany
     {
-        $tableName = config('laravel_ticket.table_names.messages', 'messages');
+        $tableName = config('laravel-ticket.table_names.messages', 'messages');
 
         return $this->hasMany(
             Message::class,
@@ -69,7 +67,7 @@ class Ticket extends Model
      */
     public function categories(): BelongsToMany
     {
-        $table = config('laravel_ticket.table_names.category_ticket', 'category_ticket');
+        $table = config('laravel-ticket.table_names.category_ticket', 'category_ticket');
 
         return $this->belongsToMany(
             Category::class,
@@ -86,7 +84,7 @@ class Ticket extends Model
      */
     public function labels(): BelongsToMany
     {
-        $table = config('laravel_ticket.table_names.label_ticket', 'label_ticket');
+        $table = config('laravel-ticket.table_names.label_ticket', 'label_ticket');
 
         return $this->belongsToMany(
             Label::class,
@@ -104,7 +102,7 @@ class Ticket extends Model
     public function getTable()
     {
         return config(
-            'laravel_ticket.table_names.tickets',
+            'laravel-ticket.table_names.tickets',
             parent::getTable()
         );
     }

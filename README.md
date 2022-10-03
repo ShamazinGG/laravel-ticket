@@ -32,13 +32,14 @@
 
 ## Introduction
 __Laravel Ticket__ package, is a Backend API to handle your ticket system, with an easy way.
+This is apapted fork for php 7.4.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require coderflex/laravel-ticket
+composer require shamazingg/laravel-ticket
 ```
 
 ## Configuration
